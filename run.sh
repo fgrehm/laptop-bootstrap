@@ -11,3 +11,4 @@ fi
 ./scripts/dotfiles
 ./scripts/rubies
 ./scripts/configs
+./scripts/notify-osd
