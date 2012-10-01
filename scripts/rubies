@@ -1,0 +1,19 @@
+#!/bin/bash
+
+git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+mkdir -p ~/.rbenv/plugins
+pushd ~/.rbenv/plugins
+  git clone git://github.com/sstephenson/ruby-build.git
+  git clone git://github.com/chriseppstein/rbenv-each.git
+  git clone git@github.com:fgrehm/rbenv-install-remote.git
+  git clone git://github.com/sstephenson/rbenv-vars.git
+popd
+
+rbenv install 1.9.3-p194 && rbenv global 1.9.3-p194
+rbenv install https://raw.github.com/gist/3345650/ree-1.8.7-2011.03
+rbenv install https://raw.github.com/gist/3345650/ree-1.8.7-2012.02
+
+rbenv rehash
+
+rbenv each -v gem install rubygems-bundler bundler
+rbenv each -v gem regenerate_binstubs

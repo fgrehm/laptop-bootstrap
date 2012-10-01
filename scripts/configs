@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Show status bar on nautilus
+gsettings set org.gnome.nautilus.window-state start-with-status-bar true
+
+# Auto hide launcher
+gsettings set com.canonical.Unity2d.Launcher hide-mode 1
