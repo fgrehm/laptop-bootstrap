@@ -13,3 +13,10 @@ gsettings set org.gnome.settings-daemon.peripherals.touchpad horiz-scroll-enable
 # Date & Time indicator
 gsettings set com.canonical.indicator.datetime show-date true
 gsettings set com.canonical.indicator.datetime show-day true
+
+# Gedit
+gsettings set org.gnome.gedit.preferences.editor auto-indent true
+gsettings set org.gnome.gedit.preferences.editor bracket-matching true
+gsettings set org.gnome.gedit.preferences.editor create-backup-copy false
+gsettings set org.gnome.gedit.preferences.editor highlight-current-line true
+gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
