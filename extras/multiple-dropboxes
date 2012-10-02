@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+  echo 'You need to provide the folder name'
+  exit 1
+fi
+
+if ! [ -d ~/.Dropbox-$1/Dropbox ]; then
+
+  killall -9 dropbox
+  mkdir -p ~/.Dropbox-$1
+  HOME=$HOME/.Dropbox-$1 dropbox start -i
+  echo "Wait until the installation is completed and run this script again"
+
+elif ! [ -L ~/Dropbox-$1 ]; then
+
+  mkdir -p ~/bin
+  echo '#!/bin/bash' > ~/bin/start-$1-dropbox
+  echo "HOME=$HOME/.Dropbox-$1 $HOME/.Dropbox-$1/.dropbox-dist/dropboxd &" >> ~/bin/start-$1-dropbox
+  chmod +x ~/bin/start-$1-dropbox
+
+  cat > $HOME/.config/autostart/start-$1-dropbox.desktop << STARTUP_CONF
+[Desktop Entry]
+Type=Application
+Exec=$HOME/bin/start-$1-dropbox
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Dropbox-$1
+Name=Dropbox-$1
+STARTUP_CONF
+  echo "Symlink and startup script created!"
+
+else
+
+  echo "Nothing to do..."
+
+fi
