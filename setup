@@ -12,3 +12,4 @@ fi
 ./scripts/rubies
 ./scripts/configs
 ./scripts/notify-osd
+./scripts/vagrant-boxes
