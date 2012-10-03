@@ -5,6 +5,7 @@ sudo apt-get install --yes --force-yes postgresql-9.1 postgresql-client-9.1 libp
 if ! (sudo grep -q '^host .* 127\.0\.0\.1\/32 .* trust' /etc/postgresql/9.1/main/pg_hba.conf); then
   sudo sed -i.bak 's/^\(host .* 127\.0\.0\.1\/32 .*\)md5/\1trust/' /etc/postgresql/9.1/main/pg_hba.conf
   sudo service postgresql restart
+  sudo update-rc.d -f postgresql disable
 fi
 
 if ! (sudo -u postgres -- psql -c '\du' 2>/dev/null | grep -q $USER); then
