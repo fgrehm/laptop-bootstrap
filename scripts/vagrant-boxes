@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.bashrc
+
 gem install vagrant
 rbenv rehash
 
