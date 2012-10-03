@@ -20,3 +20,6 @@ gsettings set org.gnome.gedit.preferences.editor bracket-matching true
 gsettings set org.gnome.gedit.preferences.editor create-backup-copy false
 gsettings set org.gnome.gedit.preferences.editor highlight-current-line true
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
+
+# Terminal
+gconftool-2 -s /apps/gnome-terminal/profiles/Default/scrollback_lines 10000 -t int
