@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo apt-get install --yes --force-yes npm
+
+sudo npm install -g jslint
+sudo npm install -g coffee-script

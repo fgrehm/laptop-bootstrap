@@ -15,3 +15,4 @@ cd setup
 ./configs
 ./notify-osd
 ./vagrant-boxes
+./node
