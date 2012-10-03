@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /usr/local/share
+curl http://phantomjs.googlecode.com/files/phantomjs-1.7.0-linux-x86_64.tar.bz2 | sudo tar xjfv -
+sudo ln -s /usr/local/share/phantomjs-1.7.0-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs

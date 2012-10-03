@@ -16,3 +16,4 @@ cd setup
 ./notify-osd
 ./vagrant-boxes
 ./node
+./phantomjs
