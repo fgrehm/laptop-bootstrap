@@ -5,6 +5,7 @@ sudo apt-get install --yes --force-yes \
   google-chrome-stable \
   dropbox \
   skype \
+  gimp \
   notifyosdconfig \
   unity-lens-utilities unity-scope-calculator unity-scope-cities \
   git-core gitg \
