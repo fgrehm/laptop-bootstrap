@@ -14,6 +14,6 @@ cd setup
 ./rubies
 ./configs
 ./notify-osd
-./vagrant-boxes
+./vagrant
 ./node
 ./phantomjs

@@ -2,7 +2,7 @@
 
 source ~/.bashrc
 
-gem install vagrant
+gem install vagrant vagrant-vbguest
 rbenv rehash
 
 vagrant box add precise64 http://files.vagrantup.com/precise64.box
