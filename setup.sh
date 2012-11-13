@@ -17,3 +17,4 @@ cd setup
 ./vagrant
 ./node
 ./phantomjs
+./git

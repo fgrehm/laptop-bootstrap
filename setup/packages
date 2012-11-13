@@ -8,7 +8,6 @@ sudo apt-get install --yes --force-yes \
   gimp \
   notifyosdconfig \
   unity-lens-utilities unity-scope-calculator unity-scope-cities \
-  git-core gitg \
   curl tree \
   exuberant-ctags \
   vim-nox vim-gnome \
