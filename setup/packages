@@ -9,6 +9,7 @@ sudo apt-get install --yes --force-yes \
   notifyosdconfig \
   unity-lens-utilities unity-scope-calculator unity-scope-cities \
   curl tree \
+  tmux \
   exuberant-ctags \
   vim-nox vim-gnome \
   icedtea-plugin \

@@ -22,6 +22,6 @@ rbenv rehash
 rbenv each -v gem install rubygems-bundler bundler
 rbenv each -v gem regenerate_binstubs
 
-gem install puppet puppet-lint
+gem install puppet puppet-lint tmuxinator
 
 rbenv rehash
