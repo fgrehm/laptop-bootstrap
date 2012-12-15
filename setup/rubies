@@ -13,13 +13,12 @@ popd
 
 source ~/.bashrc
 
-rbenv install 1.9.3-p327 && rbenv global 1.9.3-p327
-rbenv install https://raw.github.com/gist/3345650/ree-1.8.7-2011.03
-rbenv install https://raw.github.com/gist/3345650/ree-1.8.7-2012.02
+rbenv install 1.9.3-p327
+VERSION_NAME=1.9.3-p327-patched rbenv install https://raw.github.com/gist/1688857/2-1.9.3-p327-patched.sh && rbenv global 1.9.3-p327-patched
 
 rbenv rehash
 
-rbenv each -v gem install rubygems-bundler bundler
+rbenv each -v gem install rubygems-bundler bundler gem-browse
 rbenv each -v gem regenerate_binstubs
 
 gem install puppet puppet-lint tmuxinator
