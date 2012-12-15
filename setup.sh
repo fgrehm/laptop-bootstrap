@@ -18,3 +18,4 @@ cd setup
 ./node
 ./phantomjs
 ./git
+./heroku
