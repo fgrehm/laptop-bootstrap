@@ -16,4 +16,5 @@ sudo apt-get install --yes --force-yes \
   sqlite3 libsqlite3-dev \
   ubuntu-restricted-extras \
   zlib1g-dev openssl libssl-dev libruby1.9.1 libreadline-dev build-essential libncurses5-dev libxslt1-dev libxml2-dev libffi-dev \
+  libtcmalloc-minimal0 \
   libxine1-ffmpeg gxine mencoder totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
