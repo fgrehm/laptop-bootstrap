@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sudo mkdir -p /var/lib/docker
+sudo mkdir -p /var/lib/lxc
+
+mkdir -p /home/fabio/docker
+mkdir -p /home/fabio/lxc
+
+sudo ln -s /home/fabio/docker /var/lib/docker
+sudo ln -s /home/fabio/lxc /var/lib/lxc

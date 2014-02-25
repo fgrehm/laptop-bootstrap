@@ -1,8 +1,4 @@
 #!/bin/bash
 
-source ~/.bashrc
-
-gem install vagrant vagrant-vbguest
-rbenv rehash
-
-vagrant box add precise64 http://files.vagrantup.com/precise64.box
+wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.4.3_x86_64.deb -O /tmp/vagrant.deb
+sudo dpkg -i /tmp/vagrant.deb

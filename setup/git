@@ -1,4 +1,0 @@
-#!/bin/bash
-
-sudo apt-get install --yes --force-yes git-core gitg
-curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub

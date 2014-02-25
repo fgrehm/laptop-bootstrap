@@ -9,16 +9,12 @@ cd setup
 
 ./cleanup
 ./add-repositories
+./lxc
 ./packages
 ./dotfiles
-./rubies
 ./configs
-./notify-osd
 ./vagrant
-./node
-./phantomjs
-./git
-./heroku
 
 # Add my user to vboxusers group so that USB devices work properly on VirtualBox
-usermod -a -G vboxusers fabio
+sudo groupadd vboxusers
+sudo usermod -a -G vboxusers fabio
