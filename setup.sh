@@ -14,6 +14,7 @@ cd setup
 ./dotfiles
 ./configs
 ./vagrant
+./docker
 
 # Add my user to vboxusers group so that USB devices work properly on VirtualBox
 sudo groupadd vboxusers
