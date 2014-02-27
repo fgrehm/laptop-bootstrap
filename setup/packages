@@ -18,6 +18,7 @@ sudo apt-get install --yes --force-yes \
   ubuntu-restricted-extras \
   lxc redir \
   google-chrome-stable \
+  bsdtar \
   linux-image-extra-`uname -r`
 
 sudo apt-get install lxc-docker
