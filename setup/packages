@@ -5,6 +5,7 @@ sudo apt-get dist-upgrade
 
 sudo apt-get install --yes --force-yes \
   virtualbox-4.3 \
+  nfs-kernel-server \
   dropbox \
   skype \
   gimp \
