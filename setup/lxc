@@ -1,10 +1,24 @@
 #!/bin/bash
 
-sudo mkdir -p /var/lib/docker
-sudo mkdir -p /var/lib/lxc
+if ! [ -L /var/lib/lxc ]; then
+  if [ -d /var/lib/lxc ]; then
+    echo "Moving /var/lib/lxc to ${HOME}/lxc"
+    sudo mv /var/lib/lxc ${HOME}
+  else
+    echo "Creating ${HOME}/lxc dir"
+    mkdir -p ${HOME}/lxc
+  fi
+  echo "Symlinking /var/lib/lxc to ${HOME}/lxc"
+  sudo ln -s ${HOME}/lxc /var/lib/lxc
+else
+  echo "Skipping /var/lib/lxc symlink"
+fi
 
-mkdir -p /home/fabio/docker
-mkdir -p /home/fabio/lxc
-
-sudo ln -s /home/fabio/docker /var/lib/docker
-sudo ln -s /home/fabio/lxc /var/lib/lxc
+docker_runtime_path=${HOME}/docker
+if ! $(grep -q ${docker_runtime_path} /etc/default/docker); then
+  echo "Configuring docker to use ${docker_runtime_path} as the graph path"
+  mkdir -p $docker_runtime_path
+  echo "DOCKER_OPTS='-g ${docker_runtime_path}'" | sudo tee -a /etc/default/docker
+else
+  echo 'Skipping docker graph path config'
+fi
