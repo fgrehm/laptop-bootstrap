@@ -20,6 +20,7 @@ sudo apt-get install --yes --force-yes \
   lxc redir \
   google-chrome-stable \
   bsdtar \
+  transmission \
   linux-image-extra-`uname -r`
 
 sudo apt-get install lxc-docker
