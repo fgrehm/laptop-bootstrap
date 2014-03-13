@@ -14,6 +14,20 @@ else
   echo "Skipping /var/lib/lxc symlink"
 fi
 
+if ! [ -L /var/cache/lxc ]; then
+  if [ -d /var/cache/lxc ]; then
+    echo "Moving /var/cache/lxc to ${HOME}/lxc-cache"
+    sudo mv /var/cache/lxc ${HOME}/lxc-cache
+  else
+    echo "Creating ${HOME}/lxc-cache dir"
+    mkdir -p ${HOME}/lxc-cache
+  fi
+  echo "Symlinking /var/cache/lxc to ${HOME}/lxc-cache"
+  sudo ln -s ${HOME}/lxc-cache /var/cache/lxc
+else
+  echo "Skipping /var/cache/lxc symlink"
+fi
+
 docker_runtime_path=${HOME}/docker
 if ! $(grep -q ${docker_runtime_path} /etc/default/docker); then
   echo "Configuring docker to use ${docker_runtime_path} as the graph path"
