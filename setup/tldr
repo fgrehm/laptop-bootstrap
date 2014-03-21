@@ -1,0 +1,6 @@
+#!/bin/bash
+
+wget https://github.com/pranavraja/tldr/releases/download/v1/tldr_0.1.0_amd64.deb
+  -O /tmp/tldr.deb
+
+sudo dpkg -i /tmp/tldr.deb
