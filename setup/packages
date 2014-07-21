@@ -22,6 +22,7 @@ sudo apt-get install --yes --force-yes \
   linux-image-extra-`uname -r` \
   asciinema \
   lxc-docker \
+  p7zip \
   simplescreenrecorder
 
 sudo apt-get clean
