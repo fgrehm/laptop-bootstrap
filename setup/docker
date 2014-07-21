@@ -1,5 +1,15 @@
 #!/bin/bash
 
-# Add the docker group if it doesn't already exist.
+docker_runtime_path=${HOME}/docker
+if ! $(grep -q ${docker_runtime_path} /etc/default/docker); then
+  echo "Configuring docker to use ${docker_runtime_path} as the graph path"
+  mkdir -p $docker_runtime_path
+  echo "DOCKER_OPTS='-g ${docker_runtime_path}'" | sudo tee -a /etc/default/docker
+  sudo service docker restart
+else
+  echo 'Skipping docker graph path config'
+fi
+
+# Add the docker group
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker

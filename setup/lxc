@@ -27,12 +27,3 @@ if ! [ -L /var/cache/lxc ]; then
 else
   echo "Skipping /var/cache/lxc symlink"
 fi
-
-docker_runtime_path=${HOME}/docker
-if ! $(grep -q ${docker_runtime_path} /etc/default/docker); then
-  echo "Configuring docker to use ${docker_runtime_path} as the graph path"
-  mkdir -p $docker_runtime_path
-  echo "DOCKER_OPTS='-g ${docker_runtime_path}'" | sudo tee -a /etc/default/docker
-else
-  echo 'Skipping docker graph path config'
-fi

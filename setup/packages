@@ -12,17 +12,17 @@ sudo apt-get install --yes --force-yes \
   curl tree htop \
   tmux \
   git gitg \
-  autoconf \
   vim-nox vim-gnome \
   icedtea-plugin \
-  sqlite3 libsqlite3-dev \
   ubuntu-restricted-extras \
   lxc redir \
   google-chrome-stable \
   bsdtar \
   transmission \
-  linux-image-extra-`uname -r`
-
-sudo apt-get install lxc-docker
+  linux-image-extra-`uname -r` \
+  asciinema \
+  lxc-docker \
+  simplescreenrecorder
 
 sudo apt-get clean
+sudo apt-get autoremove

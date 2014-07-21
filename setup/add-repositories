@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sudo apt-get install --yes --force-yes python-software-properties
+sudo apt-get install --yes --force-yes software-properties-common
 
 if ! [ -f /etc/apt/sources.list.d/virtualbox.list ]; then
   wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
@@ -13,13 +13,18 @@ if ! [ -f /etc/apt/sources.list.d/google-chrome.list ]; then
 fi
 
 if ! [ -f /etc/apt/sources.list.d/dropbox.list ]; then
-  # Switch to $(lsb_release -sc)
-  echo "deb http://linux.dropbox.com/ubuntu quantal main" | sudo tee /etc/apt/sources.list.d/dropbox.list
+  echo "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/dropbox.list
   sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 fi
 
 # Skype
 sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+
+# Asciinema
+sudo add-apt-repository -y ppa:zanchey/asciinema
+
+# SimpleScreenRecorder
+sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 
 # Docker
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
