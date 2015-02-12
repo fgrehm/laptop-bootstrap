@@ -23,7 +23,8 @@ sudo apt-get install --yes --force-yes \
   asciinema \
   lxc-docker \
   p7zip \
-  simplescreenrecorder
+  simplescreenrecorder \
+  xclip
 
 sudo apt-get clean
 sudo apt-get autoremove
