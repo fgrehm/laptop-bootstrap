@@ -23,6 +23,7 @@ sudo apt-get install --yes --force-yes \
   lxc-docker \
   p7zip \
   simplescreenrecorder \
+  shutter \
   xclip
 
 sudo apt-get clean
