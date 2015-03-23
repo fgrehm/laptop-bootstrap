@@ -17,7 +17,8 @@ cd setup
 ./docker
 ./gh
 ./hk
-./tldr
+./virtualbox
+./spotify
 
 # Add my user to vboxusers group so that USB devices work properly on VirtualBox
 sudo groupadd vboxusers
