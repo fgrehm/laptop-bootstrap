@@ -16,6 +16,7 @@ cd setup
 ./vagrant
 ./docker
 ./gh
+./git-extras
 ./hk
 ./virtualbox
 ./spotify
