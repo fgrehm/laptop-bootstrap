@@ -15,6 +15,7 @@ cd setup
 ./configs
 ./vagrant
 ./docker
+./packer
 ./gh
 ./git-extras
 ./hk
