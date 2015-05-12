@@ -15,7 +15,7 @@ sudo apt-get install --yes --force-yes \
   icedtea-plugin \
   ubuntu-restricted-extras \
   lxc redir \
-  google-chrome-stable \
+  firefox \
   bsdtar \
   transmission \
   linux-image-extra-`uname -r` \
