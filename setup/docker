@@ -13,3 +13,7 @@ fi
 # Add the docker group
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
+
+# docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.3.2/docker-compose-`uname -s`-`uname -m` > $HOME/bin/docker-compose
+chmod +x $HOME/bin/docker-compose
