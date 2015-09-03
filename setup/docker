@@ -15,8 +15,11 @@ sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 
 # docker-compose
-curl -L https://github.com/docker/compose/releases/download/1.3.2/docker-compose-`uname -s`-`uname -m` > $HOME/bin/docker-compose
-chmod +x $HOME/bin/docker-compose
+if ! [[ -x $HOME/bin/docker-compose ]]; then
+  curl -L https://github.com/docker/compose/releases/download/1.4.0/docker-compose-`uname -s`-`uname -m` > $HOME/bin/docker-compose
+  chmod +x $HOME/bin/docker-compose
+fi
 
-curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/bash/docker-compose \
+# docker-compose completions
+curl -L https://raw.githubusercontent.com/docker/compose/$($HOME/bin/docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/bash/docker-compose \
   | sudo tee /etc/bash_completion.d/docker-compose

@@ -10,21 +10,25 @@ sudo apt-get install --yes --force-yes \
   gimp \
   curl tree htop \
   tmux \
-  git gitg \
+  git \
   vim-nox vim-gnome \
   icedtea-plugin \
   ubuntu-restricted-extras \
   lxc redir \
-  google-chrome-stable \
+  chromium-browser \
   bsdtar \
   transmission \
   linux-image-extra-`uname -r` \
   asciinema \
-  lxc-docker \
   p7zip \
   simplescreenrecorder \
   shutter \
-  xclip
+  xclip \
+  virtualbox \
+  spotify-client \
+  openjdk-7-jre-headless
+
+curl -sSL https://get.docker.com/ | sh
 
 sudo apt-get clean
 sudo apt-get autoremove
