@@ -24,7 +24,7 @@ sudo apt-get install --yes --force-yes \
   simplescreenrecorder \
   shutter \
   xclip \
-  virtualbox \
+  virtualbox-5.0 \
   spotify-client \
   openjdk-7-jre-headless
 
