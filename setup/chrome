@@ -1,2 +1,0 @@
-sudo mkdir -p /opt/google/chrome/plugins
-sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so /opt/google/chrome/plugins

@@ -1,7 +1,3 @@
 #!/bin/bash
 
-L="${HOME}/bin/hk" && \
-curl -sL -A "`uname -sp`" https://hk.heroku.com/hk.gz | zcat >$L && \
-chmod +x $L
-
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
