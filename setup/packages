@@ -3,32 +3,30 @@
 sudo apt-get update
 sudo apt-get dist-upgrade
 
-sudo apt-get install --yes --force-yes \
-  nfs-kernel-server \
-  dropbox \
-  skype \
-  gimp \
-  curl tree htop \
-  tmux \
-  git \
-  vim-nox vim-gnome \
-  icedtea-plugin \
-  ubuntu-restricted-extras \
-  lxc redir \
-  chromium-browser \
-  bsdtar \
-  transmission \
-  linux-image-extra-`uname -r` \
-  asciinema \
-  p7zip \
-  simplescreenrecorder \
-  shutter \
-  xclip \
-  virtualbox-5.0 \
-  spotify-client \
-  openjdk-7-jre-headless
+sudo snap install hub --classic
+sudo snap install docker --edge
+sudo snap install slack --classic
+sudo snap install spotify
 
-curl -sSL https://get.docker.com/ | sh
+sudo apt-get install --yes --force-yes \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gawk \
+  git \
+  git-lfs \
+  gnome-tweak-tool \
+  gnupg-agent \
+  htop \
+  jq \
+  openjdk-8-jre \
+  parallel \
+  tmux \
+  tree \
+  vim-gtk \
+  vim-nox \
+  virtualbox \
+  xclip
 
 sudo apt-get clean
 sudo apt-get autoremove

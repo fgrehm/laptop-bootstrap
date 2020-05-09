@@ -5,6 +5,3 @@ pushd ~/projects/oss
   git clone git@github.com:fgrehm/dotfiles.git && cd dotfiles && ./setup.sh && cd ..
   git clone git@github.com:fgrehm/vimfiles.git && cd vimfiles && ./setup.sh
 popd
-
-mkdir -p ~/.fonts
-git clone https://github.com/scotu/ubuntu-mono-powerline.git ~/.fonts

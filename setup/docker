@@ -1,25 +1,32 @@
 #!/bin/bash
 
-docker_runtime_path=${HOME}/docker
-if ! $(grep -q ${docker_runtime_path} /etc/default/docker); then
-  echo "Configuring docker to use ${docker_runtime_path} as the graph path"
+wget 'https://download.docker.com/linux/ubuntu/dists/eoan/pool/stable/amd64/docker-ce_19.03.8~3-0~ubuntu-eoan_amd64.deb' \
+  -O /tmp/docker-ce.deb
+wget 'https://download.docker.com/linux/ubuntu/dists/eoan/pool/stable/amd64/docker-ce-cli_19.03.8~3-0~ubuntu-eoan_amd64.deb' \
+  -O /tmp/docker-ce-cli.deb
+wget 'https://download.docker.com/linux/ubuntu/dists/eoan/pool/stable/amd64/containerd.io_1.2.13-1_amd64.deb' \
+  -O /tmp/containerd.io.deb
+sudo dpkg -i /tmp/docker-ce.deb /tmp/docker-ce-cli.deb /tmp/containerd.io.deb
+
+docker_runtime_path=${HOME}/docker-data
+if ! $(grep -q ${docker_runtime_path} /etc/docker/daemon.json); then
+  echo "Configuring docker to use ${docker_runtime_path} as the data-root path"
   mkdir -p $docker_runtime_path
-  echo "DOCKER_OPTS='-g ${docker_runtime_path}'" | sudo tee -a /etc/default/docker
+
+  echo "{ \"data-root\": \"${docker_runtime_path}\" }"
   sudo service docker restart
 else
-  echo 'Skipping docker graph path config'
+  echo 'Skipping docker data-root config'
 fi
 
-# Add the docker group
+Add the docker group
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 
-# docker-compose
-if ! [[ -x $HOME/bin/docker-compose ]]; then
-  curl -L https://github.com/docker/compose/releases/download/1.4.0/docker-compose-`uname -s`-`uname -m` > $HOME/bin/docker-compose
-  chmod +x $HOME/bin/docker-compose
-fi
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo curl -L https://raw.githubusercontent.com/docker/compose/1.25.5/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
-# docker-compose completions
-curl -L https://raw.githubusercontent.com/docker/compose/$($HOME/bin/docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/bash/docker-compose \
-  | sudo tee /etc/bash_completion.d/docker-compose
+if ! $(grep -q max_map_count /etc/sysctl.conf); then
+  echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
+fi
