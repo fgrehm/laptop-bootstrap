@@ -1,32 +1,33 @@
 #!/bin/bash
 
-wget 'https://download.docker.com/linux/ubuntu/dists/eoan/pool/stable/amd64/docker-ce_19.03.8~3-0~ubuntu-eoan_amd64.deb' \
-  -O /tmp/docker-ce.deb
-wget 'https://download.docker.com/linux/ubuntu/dists/eoan/pool/stable/amd64/docker-ce-cli_19.03.8~3-0~ubuntu-eoan_amd64.deb' \
-  -O /tmp/docker-ce-cli.deb
-wget 'https://download.docker.com/linux/ubuntu/dists/eoan/pool/stable/amd64/containerd.io_1.2.13-1_amd64.deb' \
-  -O /tmp/containerd.io.deb
-sudo dpkg -i /tmp/docker-ce.deb /tmp/docker-ce-cli.deb /tmp/containerd.io.deb
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 docker_runtime_path=${HOME}/docker-data
 if ! $(grep -q ${docker_runtime_path} /etc/docker/daemon.json); then
   echo "Configuring docker to use ${docker_runtime_path} as the data-root path"
   mkdir -p $docker_runtime_path
 
-  echo "{ \"data-root\": \"${docker_runtime_path}\" }"
+  echo "{ \"data-root\": \"${docker_runtime_path}\" }" | sudo tee /etc/docker/daemon.json
   sudo service docker restart
 else
   echo 'Skipping docker data-root config'
 fi
 
-Add the docker group
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-sudo curl -L https://raw.githubusercontent.com/docker/compose/1.25.5/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+sudo curl -L https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
-if ! $(grep -q max_map_count /etc/sysctl.conf); then
-  echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
-fi
+# if ! $(grep -q max_map_count /etc/sysctl.conf); then
+#   echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
+# fi
